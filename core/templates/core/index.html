@@ -1,4 +1,5 @@
 {% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,7 +181,7 @@
                         <div class="project-card" onclick="openProject('{{ project.id }}')">
                             {% with project.images.first as thumb %}
                                 {% if thumb %}
-                                    <img class="project-thumb" src="{{ thumb.image.url }}" alt="{{ project.title }}">
+                                    <img class="project-thumb" src="{{ STATIC_PREFIX }}img/projects/{{ thumb.filename }}" alt="{{ project.title }}">
                                 {% else %}
                                     <div class="project-thumb-placeholder">No Image</div>
                                 {% endif %}
@@ -282,7 +283,7 @@
                 title: "{{ project.title }}",
                 desc: "{{ project.short_description|escapejs }}",
                 longDesc: "{{ project.long_description|escapejs }}",
-                images: [{% for img in project.images.all %}"{{ img.image.url }}"{% if not forloop.last %},{% endif %}{% endfor %}],
+                images: [{% for img in project.images.all %}"{{ STATIC_PREFIX }}img/projects/{{ img.filename }}"{% if not forloop.last %},{% endif %}{% endfor %}],
                 links: [{% for link in project.links.all %}{"label": "{{ link.label }}", "url": "{{ link.url }}"}{% if not forloop.last %},{% endif %}{% endfor %}]
             }{% if not forloop.last %},{% endif %}
             {% endfor %}

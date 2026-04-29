@@ -27,7 +27,7 @@ class Project(models.Model):
 
 class ProjectImage(models.Model):
     project = models.ForeignKey(Project, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='projects/')
+    filename = models.CharField(max_length=200, help_text="Filename inside static/img/projects/ e.g. mygame1.png")
     order = models.IntegerField(default=0)
 
     class Meta:
