@@ -1,0 +1,293 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cayden Fallin</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <style>
+        /* Ensuring the scanlines don't block visibility */
+        .scanlines-overlay {
+            --base-opacity: 0.3;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 0, 0, 0.5) 2px,
+                rgba(0, 81, 255, 0.5) 3px
+            );
+            opacity: var(--base-opacity);
+            animation: flicker 8s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 92%, 94%, 97%, 100% { opacity: var(--base-opacity); }
+            93% { opacity: calc(var(--base-opacity) * 0.85); }
+            96% { opacity: calc(var(--base-opacity) * 0.92); }
+        }
+
+        .tab-section {
+            display: none;
+        }
+        .tab-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-layer">
+        <img src="{% static 'img/backdrop.png' %}" alt="">
+    </div>
+    <div class="bg-vignette"></div>
+
+    <div id="app">
+        <header class="site-header">
+            <div class="header-inner">
+                <div class="header-text">
+                    <div class="site-name">Cayden Fallin</div>
+                    <div class="site-tagline">Computational Media</div>
+                    <div class="site-tagline">Georgia Institute of Technology</div>
+                </div>
+                <div class="header-photo">
+                    <img class="photo-main" src="{% static 'img/photo.png' %}" alt="Cayden Fallin">
+                    <img class="photo-hover" src="{% static 'img/photo2.jpg' %}" alt="Cayden Fallin">
+                </div>
+            </div>
+        </header>
+
+        <nav class="tab-nav">
+            <button class="tab-btn" data-tab="resume">Resume</button>
+            <button class="tab-btn" data-tab="portfolio">Portfolio</button>
+            <button class="tab-btn" data-tab="contact">Contact</button>
+        </nav>
+
+        <main class="content-panel">
+            <section id="tab-resume" class="tab-section">
+                <div class="glass-box">
+                    <div class="box-title">Who Am I</div>
+                    <div class="box-body">
+                        <p>Hey there I'm John "Cayden" Fallin, a computational media student at Georgia Institute of Technology and aspiring game developer, musician, and artist.</p>
+                        <p>This website exists as a living portfolio of my work, passions, aesthetic inspirations and work experience.</p>
+                        <p>Feel free to explore around and take your time taking it all in, my resume is available for download below if you're on a tighter time schedule though.</p>
+                        <p>I'm always available for new opportunities and collaborations, so hop on over to the contact tab if you ever want to reach out to me!</p>
+                        <p>And if you want to see the rest of my work, feel free to check out my portfolio!</p>
+                    </div>
+                </div>
+
+                <div class="glass-box">
+                    <div class="box-title">Currently Working On</div>
+                    <div class="box-body">
+                        <p>There isn't currently any projects I have in development right now except for this website, but feel free to check the portfolio tab for my latest work!</p>
+                    </div>
+                </div>
+
+                <div class="glass-box">
+                    <div class="box-title">Skills</div>
+                    <div class="box-body">
+                        <div class="skill-row">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">p5.js</span>
+                            <span class="skill-tag">Processing</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">Unity</span>
+                            <span class="skill-tag">JAX</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Blender</span>
+                            <span class="skill-tag">DaVinci Resolve</span>
+                            <span class="skill-tag">Waveform DAW</span>
+                            <span class="skill-tag">Twine</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-box">
+                    <div class="box-title">Experience</div>
+                    <div class="box-body">
+                        <div class="experience-entry">
+                            <div class="exp-header">
+                                <span class="exp-title">Martial Arts Instructor</span>
+                                <span class="exp-date">03/2023 – 09/2023</span>
+                            </div>
+                            <div class="exp-place">Georgia Martial Arts and Self Defense — Acworth, GA</div>
+                            <ul class="exp-bullets">
+                                <li>Designed and delivered structured curriculum to students across multiple skill levels</li>
+                                <li>Managed classroom environment and adapted teaching methods to individual learning styles</li>
+                                <li>Built consistent rapport with students and parents in a high-accountability setting</li>
+                            </ul>
+                        </div>
+                        <div class="experience-entry">
+                            <div class="exp-header">
+                                <span class="exp-title">Cashier & Front-of-House Lead</span>
+                                <span class="exp-date">07/2021 – 09/2023</span>
+                            </div>
+                            <div class="exp-place">W&B Factory  — Acworth, GA</div>
+                            <ul class="exp-bullets">
+                                <li>Sole front-of-house employee responsible for all customer transactions and complaints without managerial support</li>
+                                <li>Managed cross-language communication with kitchen staff to coordinate orders and resolve service issues</li>
+                                <li>Handled opening and closing procedures independently across a 2+ year tenure</li>
+                            </ul>
+                        </div>
+                        <div class="experience-entry">
+                            <div class="exp-header">
+                                <span class="exp-title">Line Cook</span>
+                                <span class="exp-date">10/2023 – 07/2024</span>
+                            </div>
+                            <div class="exp-place">The Original Hot Chicken  — Woodstock, GA</div>
+                            <ul class="exp-bullets">
+                                <li>Executed food preparation under high-pressure, time-sensitive conditions in a team environment</li>
+                                <li>Maintained quality and consistency across high-volume service periods</li>
+                                <li>Led and organized team in timely cleaning and daily closure of business</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-box">
+                    <div class="box-title">Education</div>
+                    <div class="box-body">
+                        <div class="exp-header">
+                            <span class="exp-title">Georgia Institute of Technology</span>
+                            <span class="exp-date">Aug 2024 – May 2028</span>
+                        </div>
+                        <div class="exp-place">B.S. Computational Media &nbsp;·&nbsp; GPA 3.5</div>
+                        <p style="font-size: 13px; color: var(--text-muted);">
+                            Relevant coursework: Data Structures &amp; Algorithms, Objects &amp; Design,
+                            Intro to AI, Intro to Computational Media, Intro to Game Studies,
+                            Privacy &amp; Technology Policy, Linear Algebra
+                        </p>
+                    </div>
+                </div>
+
+                <a href="{% static 'resume.pdf' %}" class="resume-download" download>Download Resume PDF</a>
+            </section>
+
+            <section id="tab-portfolio" class="tab-section">
+                <div class="glass-box">
+                    <div class="box-title">Projects</div>
+                    <div class="project-grid">
+                        {% for project in projects %}
+                        <div class="project-card" onclick="openProject('{{ project.id }}')">
+                            {% with project.images.first as thumb %}
+                                {% if thumb %}
+                                    <img class="project-thumb" src="{{ thumb.image.url }}" alt="{{ project.title }}">
+                                {% else %}
+                                    <div class="project-thumb-placeholder">No Image</div>
+                                {% endif %}
+                            {% endwith %}
+                            <div class="project-info">
+                                <div class="project-title">{{ project.title }}</div>
+                                <div class="project-desc">{{ project.short_description|striptags }}</div>
+                                <div class="project-tags">
+                                    {% for tag in project.tags.split %}
+                                        <span class="tag tag-{{ tag|lower }}">{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="project-card">
+                            <div class="project-thumb-placeholder">No Image</div>
+                            <div class="project-info">
+                                <div class="project-title">No projects yet</div>
+                                <div class="project-desc">Add projects via the admin panel.</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            <div class="modal-overlay" id="projectModal" onclick="closeProject(event)">
+                <div class="modal-box">
+                    <button class="modal-close" onclick="closeModal()">✕</button>
+                    <div class="modal-gallery">
+                        <img class="modal-img" id="modalImg" src="" alt="">
+                        <div class="gallery-controls">
+                            <button class="gallery-btn" id="galleryPrev" onclick="changeImage(-1)">←</button>
+                            <span class="gallery-counter" id="galleryCounter">1 / 1</span>
+                            <button class="gallery-btn" id="galleryNext" onclick="changeImage(1)">→</button>
+                        </div>
+                    </div>
+                    <div class="modal-content">
+                        <div class="modal-title" id="modalTitle"></div>
+                        <div class="modal-desc" id="modalDesc"></div>
+                        <div class="modal-links" id="modalLinks"></div>
+                    </div>
+                </div>
+            </div>
+
+            <section id="tab-contact" class="tab-section">
+                <div class="glass-box">
+                    <div class="box-title">Find Me</div>
+                    <div class="contact-links">
+                        <a href="mailto:caydenfallin@gmail.com" class="contact-link">
+                            <span class="contact-label">Email</span>
+                            caydenfallin@gmail.com
+                        </a>
+                        <a href="https://github.com/CaydenFallin" class="contact-link" target="_blank">
+                            <span class="contact-label">GitHub</span>
+                            github.com/CaydenFallin
+                        </a>
+                        <a href="https://linkedin.com/in/john-fallin-b51879274" class="contact-link" target="_blank">
+                            <span class="contact-label">LinkedIn</span>
+                            linkedin.com/in/john-fallin-b51879274
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glass-box">
+                    <div class="box-title">Send a Message</div>
+                    <form class="contact-form" method="POST" action="/contact/">
+                        {% csrf_token %}
+                        <div class="form-field">
+                            <label class="form-label">Name</label>
+                            <input class="form-input" type="text" name="name" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label">Email</label>
+                            <input class="form-input" type="email" name="email" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-textarea" name="message" required></textarea>
+                        </div>
+                        <button class="form-btn" type="submit">Send</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            &copy; 2026 John Fallin
+        </footer>
+    </div>
+
+    <div class="scanlines-overlay"></div>
+
+    <script>
+        const projectData = {
+            {% for project in projects %}
+            "{{ project.id }}": {
+                title: "{{ project.title }}",
+                desc: "{{ project.short_description|escapejs }}",
+                longDesc: "{{ project.long_description|escapejs }}",
+                images: [{% for img in project.images.all %}"{{ img.image.url }}"{% if not forloop.last %},{% endif %}{% endfor %}],
+                links: [{% for link in project.links.all %}{"label": "{{ link.label }}", "url": "{{ link.url }}"}{% if not forloop.last %},{% endif %}{% endfor %}]
+            }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        };
+    </script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
