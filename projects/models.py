@@ -1,5 +1,4 @@
 from django.db import models
-from ckeditor.fields import RichTextField
 
 class Project(models.Model):
     CATEGORY_CHOICES = [
@@ -10,7 +9,7 @@ class Project(models.Model):
         ('other', 'Other'),
     ]
     title = models.CharField(max_length=200)
-    short_description = RichTextField()
+    short_description = models.TextField()
     long_description = models.TextField(blank=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     tags = models.CharField(max_length=200, blank=True)
